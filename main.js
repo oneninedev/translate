@@ -22,8 +22,8 @@ function createWindow () {
             // 해당 콜백으로 사파리 브라우저를 오픈하고 쿼리스트링으로 크롬번역기를 호출한다
 
             // window.open('https://github.com')
-
-            shell.openExternal("https://translate.google.co.kr/?hl=ko&tab=TT&authuser=0#view=home&op=translate&sl=auto&tl=ko&text=ok")
+            let query = 'ok'
+            shell.openExternal(`https://translate.google.co.kr/?hl=ko&tab=TT&authuser=0#view=home&op=translate&sl=auto&tl=ko&text=${query}`)
         })
     })
 }
