@@ -10,3 +10,4 @@ yarn dist
 https://www.electronjs.org/docs/api/shell#shellopenexternalurl-options
 #### 빌드
 https://github.com/electron-userland/electron-builder
+https://www.electron.build/cli
