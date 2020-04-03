@@ -1,4 +1,4 @@
-const { app, globalShortcut, BrowserWindow, shell } = require('electron')
+const { app, globalShortcut, BrowserWindow, shell, clipboard } = require('electron')
 
 function createWindow () {
     // 브라우저 창을 생성합니다.
@@ -21,8 +21,8 @@ function createWindow () {
             console.log('CommandOrControl+X is pressed')
             // 해당 콜백으로 사파리 브라우저를 오픈하고 쿼리스트링으로 크롬번역기를 호출한다
 
-            // window.open('https://github.com')
-            let query = 'ok'
+            let query = clipboard.readText()
+            // 마지막에 입력된 클립보드의 텍스트를 번역한다
             shell.openExternal(`https://translate.google.co.kr/?hl=ko&tab=TT&authuser=0#view=home&op=translate&sl=auto&tl=ko&text=${query}`)
         })
     })
