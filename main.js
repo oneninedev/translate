@@ -3,8 +3,8 @@ const { app, globalShortcut, BrowserWindow, shell, clipboard } = require('electr
 function createWindow () {
     // 브라우저 창을 생성합니다.
     const win = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 219,
+        height: 100,
         webPreferences: {
             nodeIntegration: true
         }
@@ -14,11 +14,11 @@ function createWindow () {
     win.loadFile('index.html')
 
     // 개발자 도구를 엽니다.
-    win.webContents.openDevTools()
+    // win.webContents.openDevTools()
 
     app.whenReady().then(() => {
         globalShortcut.register('CommandOrControl+X', () => {
-            console.log('CommandOrControl+X is pressed')
+            // console.log('CommandOrControl+X is pressed')
             // 해당 콜백으로 사파리 브라우저를 오픈하고 쿼리스트링으로 크롬번역기를 호출한다
 
             let query = clipboard.readText()
