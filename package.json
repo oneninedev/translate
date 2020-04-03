@@ -1,5 +1,5 @@
 {
-  "name": "translate",
+  "name": "Clipboard_Translator",
   "version": "1.0.0",
   "description": "electron.js",
   "main": "main.js",
@@ -26,6 +26,7 @@
   "build": {
     "appId": "oneninedev.translator",
     "mac": {
+      "icon": "build/icon.png",
       "category": "oneninedev.util"
     }
   }
