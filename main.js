@@ -1,4 +1,4 @@
-const { app, globalShortcut, BrowserWindow } = require('electron')
+const { app, globalShortcut, BrowserWindow, shell } = require('electron')
 
 function createWindow () {
     // 브라우저 창을 생성합니다.
@@ -19,7 +19,11 @@ function createWindow () {
     app.whenReady().then(() => {
         globalShortcut.register('CommandOrControl+X', () => {
             console.log('CommandOrControl+X is pressed')
-            // 해당 콜백으로 사파리 브라우저를 오픈하고 쿼리스트링으로 크롬번역기를 호출한
+            // 해당 콜백으로 사파리 브라우저를 오픈하고 쿼리스트링으로 크롬번역기를 호출한다
+
+            // window.open('https://github.com')
+
+            shell.openExternal("https://translate.google.co.kr/?hl=ko&tab=TT&authuser=0#view=home&op=translate&sl=auto&tl=ko&text=ok")
         })
     })
 }
@@ -27,7 +31,7 @@ function createWindow () {
 // 이 메소드는 Electron의 초기화가 완료되고
 // 브라우저 윈도우가 생성될 준비가 되었을때 호출된다.
 // 어떤 API는 이 이벤트가 나타난 이후에만 사용할 수 있습니다.
-app.whenReady().then(createWindow)다
+app.whenReady().then(createWindow)
 
 // 모든 윈도우가 닫히면 종료된다.
 app.on('window-all-closed', () => {
