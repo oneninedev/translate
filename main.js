@@ -1,6 +1,6 @@
-const { app, globalShortcut, BrowserWindow, shell, clipboard } = require('electron')
+const {app, globalShortcut, BrowserWindow, shell, clipboard, ipcMain} = require('electron')
 
-function createWindow () {
+function createWindow() {
     // 브라우저 창을 생성합니다.
     let googleTranslate = 'https://translate.google.co.kr/?hl=ko&tab=TT&authuser=0#view=home&op=translate&sl=auto&tl=ko&text='
     let papagoTranslate = 'https://papago.naver.com/?sk=auto&tk=ko&st='
@@ -8,50 +8,51 @@ function createWindow () {
     const top = new BrowserWindow({
         width: 600,
         height: 500,
-        x:500
+        webPreferences: {
+            nodeIntegration: true
+        }
     })
 
     const childGoogle = new BrowserWindow({
         width: 600,
         height: 500,
         parent: top,
-        closable: false
+        closable: false,
+        show:false
     })
+
 
     const childPapago = new BrowserWindow({
         width: 600,
         height: 500,
         parent: top,
-        closable: false
+        closable: false,
+        show:false
     })
 
-    childGoogle.close = () => {
-        top.close()
-    }
-    childPapago.close = () => {
-        top.close()
-    }
-    
     // const win = new BrowserWindow({
     //     width: 600,
     //     height: 400,
     //     webPreferences: {
     //         nodeIntegration: true,
-    //         webviewTag: true,
+    //         webviewTag: true, // <webview> 태그 사용시 필요
     //         zoomFactor: 1.0
     //     },
     //     parent: top
     // })
-    // win.show()
-    // top.show()
 
     // and load the index.html of the app.
-    // win.loadFile('index.html')
+    top.loadFile('index.html')
     childGoogle.loadURL(`${googleTranslate}`)
     childPapago.loadURL(`${papagoTranslate}`)
 
     // 개발자 도구를 엽니다.
     // win.webContents.openDevTools()
+    ipcMain.on('asynchronous-message', (event, arg) => {
+        console.log(arg) // "ping" 출력
+        event.reply('asynchronous-reply', 'pong')
+    })
+
 
     app.whenReady().then(() => {
         globalShortcut.register('CommandOrControl+X', () => {

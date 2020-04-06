@@ -3,16 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Clipboard Translator</title>
-    <!-- https://electronjs.org/docs/tutorial/security#csp-meta-tag -->
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
 </head>
 <body>
+<script>
+    const { ipcRenderer } = require('electron')
+    function chooseGoogle() {
+        ipcRenderer.send('asynchronous-message', 'google')
+    }
+    function choosePapago() {
+        ipcRenderer.send('asynchronous-message', 'papago')
+    }
+</script>
 <!--<h1>Hello World!</h1>-->
 <!--We are using node <script>document.write(process.versions.node)</script>,-->
 <!--Chrome <script>document.write(process.versions.chrome)</script>,-->
 <!--and Electron <script>document.write(process.versions.electron)</script>.-->
 <h1>mac : cmd + x </h1>
 <h1>window : ctrl + x </h1>
-<webview id="foo" src="https://www.github.com/" style="display:inline-flex; width:640px; height:480px"></webview>
+<button onclick="chooseGoogle()">GOOGLE</button>
+<button onclick="choosePapago()">PAPAGO</button>
+
+<!--<webview id="foo" src="https://www.github.com/" style="display:inline-flex; width:640px; height:480px"></webview>-->
 </body>
 </html>
