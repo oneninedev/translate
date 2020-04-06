@@ -3,10 +3,12 @@ const { app, globalShortcut, BrowserWindow, shell, clipboard } = require('electr
 function createWindow () {
     // 브라우저 창을 생성합니다.
     const win = new BrowserWindow({
-        width: 300,
-        height: 170,
+        width: 3000,
+        height: 1700,
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            webviewTag: true,
+            zoomFactor: 1.0
         }
     })
 
