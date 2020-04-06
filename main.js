@@ -23,7 +23,10 @@ function createWindow () {
 
             let query = clipboard.readText()
             // 마지막에 입력된 클립보드의 텍스트를 번역한다
-            shell.openExternal(`https://translate.google.co.kr/?hl=ko&tab=TT&authuser=0#view=home&op=translate&sl=auto&tl=ko&text=${query}`)
+            let googleTranslate = 'https://translate.google.co.kr/?hl=ko&tab=TT&authuser=0#view=home&op=translate&sl=auto&tl=ko&text='
+            let papagoTranslate = 'https://papago.naver.com/?sk=auto&tk=ko&st='
+            shell.openExternal(`${googleTranslate}${query}`)
+            shell.openExternal(`${papagoTranslate}${query}`)
         })
     })
 }
