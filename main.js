@@ -51,7 +51,7 @@ function createWindow() {
     // 개발자 도구를 엽니다.
     // win.webContents.openDevTools()
     ipcMain.on('asynchronous-message', (event, arg) => {
-        console.log(arg) // 이벤트를 전달받는다 'google' or 'papago'
+        // console.log(arg) // 이벤트를 전달받는다 'google' or 'papago'
         // event.reply('asynchronous-reply', 'pong') // 이벤트 발생자에게 반환시 사용
 
         if(arg === 'google'){
