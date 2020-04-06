@@ -45,12 +45,34 @@ function createWindow() {
     top.loadFile('index.html')
     childGoogle.loadURL(`${googleTranslate}`)
     childPapago.loadURL(`${papagoTranslate}`)
+    let googleStat = false
+    let papagoStat = false
 
     // 개발자 도구를 엽니다.
     // win.webContents.openDevTools()
     ipcMain.on('asynchronous-message', (event, arg) => {
-        console.log(arg) // "ping" 출력
-        event.reply('asynchronous-reply', 'pong')
+        console.log(arg) // 이벤트를 전달받는다 'google' or 'papago'
+        // event.reply('asynchronous-reply', 'pong') // 이벤트 발생자에게 반환시 사용
+
+        if(arg === 'google'){
+            if(googleStat === false){
+                googleStat = true
+                childGoogle.show()
+                return
+            }
+            googleStat = false
+            childGoogle.hide()
+        }
+
+        if(arg === 'papago'){
+            if(papagoStat === false){
+                papagoStat = true
+                childPapago.show()
+                return
+            }
+            papagoStat = false
+            childPapago.hide()
+        }
     })
 
 
