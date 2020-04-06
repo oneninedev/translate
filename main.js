@@ -3,11 +3,14 @@ const {app, globalShortcut, BrowserWindow, shell, clipboard, ipcMain} = require(
 function createWindow() {
     // 브라우저 창을 생성합니다.
     let googleTranslate = 'https://translate.google.co.kr/?hl=ko&tab=TT&authuser=0#view=home&op=translate&sl=auto&tl=ko&text='
+    let googleTranslateEn = 'https://translate.google.co.kr/?hl=ko#view=home&op=translate&sl=auto&tl=en&text='
+
     let papagoTranslate = 'https://papago.naver.com/?sk=auto&tk=ko&st='
+    let papagoTranslateEn = 'https://papago.naver.com/?sk=auto&tk=en&st='
 
     const top = new BrowserWindow({
-        width: 600,
-        height: 500,
+        width: 450,
+        height: 312,
         webPreferences: {
             nodeIntegration: true
         }
@@ -15,7 +18,7 @@ function createWindow() {
 
     const childGoogle = new BrowserWindow({
         width: 600,
-        height: 500,
+        height: 400,
         parent: top,
         closable: false,
         show:false
@@ -24,11 +27,15 @@ function createWindow() {
 
     const childPapago = new BrowserWindow({
         width: 600,
-        height: 500,
+        height: 400,
         parent: top,
         closable: false,
         show:false
     })
+
+    let x = top.getPosition()[0]
+    let y = top.getPosition()[1] + -300
+    top.setPosition(x, y)
 
     // const win = new BrowserWindow({
     //     width: 600,
@@ -57,6 +64,10 @@ function createWindow() {
         if(arg === 'google'){
             if(googleStat === false){
                 googleStat = true
+                // console.log(top.getPosition())
+                let x = top.getPosition()[0] - 375
+                let y = top.getPosition()[1] + 312
+                childGoogle.setPosition(x, y)
                 childGoogle.show()
                 return
             }
@@ -67,6 +78,10 @@ function createWindow() {
         if(arg === 'papago'){
             if(papagoStat === false){
                 papagoStat = true
+                // console.log(top.getPosition())
+                let x = top.getPosition()[0] + 225
+                let y = top.getPosition()[1] + 312
+                childPapago.setPosition(x, y)
                 childPapago.show()
                 return
             }
@@ -77,7 +92,7 @@ function createWindow() {
 
 
     app.whenReady().then(() => {
-        globalShortcut.register('CommandOrControl+X', () => {
+        globalShortcut.register('CommandOrControl+k', () => {
             // console.log('CommandOrControl+X is pressed')
             // 해당 콜백으로 사파리 브라우저를 오픈하고 쿼리스트링으로 크롬번역기를 호출한다
             // console.log(document.getElementById('foo'))
@@ -88,6 +103,21 @@ function createWindow() {
 
             childGoogle.loadURL(`${googleTranslate}${query}`)
             childPapago.loadURL(`${papagoTranslate}${query}`)
+            // shell.openExternal(`${googleTranslate}${query}`)
+            // shell.openExternal(`${papagoTranslate}${query}`)
+        })
+
+        globalShortcut.register('CommandOrControl+e', () => {
+            // console.log('CommandOrControl+X is pressed')
+            // 해당 콜백으로 사파리 브라우저를 오픈하고 쿼리스트링으로 크롬번역기를 호출한다
+            // console.log(document.getElementById('foo'))
+            // document.getElementById("foo").href = "http://www.address.com";
+
+            let query = clipboard.readText()
+            // 마지막에 입력된 클립보드의 텍스트를 번역한다
+
+            childGoogle.loadURL(`${googleTranslateEn}${query}`)
+            childPapago.loadURL(`${papagoTranslateEn}${query}`)
             // shell.openExternal(`${googleTranslate}${query}`)
             // shell.openExternal(`${papagoTranslate}${query}`)
         })
