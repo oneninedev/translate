@@ -129,12 +129,14 @@ function createWindow() {
 
             if(googleStat){
                 childGoogle.loadURL(`${googleTranslateEn}${query}`)
+                childGoogle.restore()
                 childGoogle.setAlwaysOnTop(true)
                 childGoogle.setAlwaysOnTop(false)
             }
 
             if(papagoStat){
                 childPapago.loadURL(`${papagoTranslateEn}${query}`)
+                childPapago.restore()
                 childPapago.setAlwaysOnTop(true)
                 childPapago.setAlwaysOnTop(false)
             }
