@@ -20,9 +20,7 @@ function createWindow() {
     let x = top.getPosition()[0]
     let y = top.getPosition()[1] + -300
     top.setPosition(x, y)
-
     top.loadFile('index.html')
-
 
     let googleStat = false
     let papagoStat = false
@@ -43,7 +41,7 @@ function createWindow() {
                     height: 400,
                     // parent: top,
                     // closable: false,
-                    show:false
+                    // show:false
                 })
                 childGoogle.on('close', function(e) { //   <---- Catch close event
                     // e.preventDefault()
@@ -57,7 +55,7 @@ function createWindow() {
                 let x = top.getPosition()[0] - 375
                 let y = top.getPosition()[1] + 312
                 childGoogle.setPosition(x, y)
-                childGoogle.show()
+                // childGoogle.show()
                 return
             }
             googleStat = false
@@ -71,7 +69,7 @@ function createWindow() {
                     height: 400,
                     // parent: top,
                     // closable: false,
-                    show:false
+                    // show:false
                 })
                 childPapago.on('close', function(e) { //   <---- Catch close event
                     // e.preventDefault()
@@ -85,15 +83,13 @@ function createWindow() {
                 let x = top.getPosition()[0] + 225
                 let y = top.getPosition()[1] + 312
                 childPapago.setPosition(x, y)
-                childPapago.show()
+                // childPapago.show()
                 return
             }
             papagoStat = false
             childPapago.close()
         }
     })
-
-
 
     app.whenReady().then(() => {
         globalShortcut.register('CommandOrControl+k', () => {
