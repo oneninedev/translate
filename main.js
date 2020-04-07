@@ -13,47 +13,22 @@ function createWindow() {
         height: 312,
         webPreferences: {
             nodeIntegration: true
-        }
-    })
-
-    const childGoogle = new BrowserWindow({
-        width: 600,
-        height: 400,
-        parent: top,
-        closable: false,
-        show:false
-    })
-
-
-    const childPapago = new BrowserWindow({
-        width: 600,
-        height: 400,
-        parent: top,
-        closable: false,
-        show:false
+        },
+        maximizable: false
     })
 
     let x = top.getPosition()[0]
     let y = top.getPosition()[1] + -300
     top.setPosition(x, y)
 
-    // const win = new BrowserWindow({
-    //     width: 600,
-    //     height: 400,
-    //     webPreferences: {
-    //         nodeIntegration: true,
-    //         webviewTag: true, // <webview> 태그 사용시 필요
-    //         zoomFactor: 1.0
-    //     },
-    //     parent: top
-    // })
-
-    // and load the index.html of the app.
     top.loadFile('index.html')
-    childGoogle.loadURL(`${googleTranslate}`)
-    childPapago.loadURL(`${papagoTranslate}`)
+
+
     let googleStat = false
     let papagoStat = false
+
+    let childGoogle
+    let childPapago
 
     // 개발자 도구를 엽니다.
     // win.webContents.openDevTools()
@@ -63,6 +38,20 @@ function createWindow() {
 
         if(arg === 'google'){
             if(googleStat === false){
+                childGoogle = new BrowserWindow({
+                    width: 600,
+                    height: 400,
+                    // parent: top,
+                    // closable: false,
+                    show:false
+                })
+                childGoogle.on('close', function(e) { //   <---- Catch close event
+                    // e.preventDefault()
+                    // childPapago.minimize()
+                    googleStat = false
+                })
+                childGoogle.loadURL(`${googleTranslate}`)
+
                 googleStat = true
                 // console.log(top.getPosition())
                 let x = top.getPosition()[0] - 375
@@ -72,11 +61,25 @@ function createWindow() {
                 return
             }
             googleStat = false
-            childGoogle.hide()
+            childGoogle.close()
         }
 
         if(arg === 'papago'){
             if(papagoStat === false){
+                childPapago = new BrowserWindow({
+                    width: 600,
+                    height: 400,
+                    // parent: top,
+                    // closable: false,
+                    show:false
+                })
+                childPapago.on('close', function(e) { //   <---- Catch close event
+                    // e.preventDefault()
+                    // childPapago.minimize()
+                    papagoStat = false
+                })
+                childPapago.loadURL(`${papagoTranslate}`)
+
                 papagoStat = true
                 // console.log(top.getPosition())
                 let x = top.getPosition()[0] + 225
@@ -86,9 +89,10 @@ function createWindow() {
                 return
             }
             papagoStat = false
-            childPapago.hide()
+            childPapago.close()
         }
     })
+
 
 
     app.whenReady().then(() => {
@@ -100,9 +104,20 @@ function createWindow() {
 
             let query = clipboard.readText()
             // 마지막에 입력된 클립보드의 텍스트를 번역한다
+            if(googleStat){ // 사용자가 stat을 비활성화시 동작하지 않음
+                childGoogle.loadURL(`${googleTranslate}${query}`)
+                childGoogle.restore() // 창이 최소
+                childGoogle.setAlwaysOnTop(true)
+                childGoogle.setAlwaysOnTop(false) // 최상단에 노출후 onTop 해제
+            }
 
-            childGoogle.loadURL(`${googleTranslate}${query}`)
-            childPapago.loadURL(`${papagoTranslate}${query}`)
+            if(papagoStat){
+                childPapago.loadURL(`${papagoTranslate}${query}`)
+                childPapago.restore()
+                childPapago.setAlwaysOnTop(true)
+                childPapago.setAlwaysOnTop(false)
+            }
+
             // shell.openExternal(`${googleTranslate}${query}`)
             // shell.openExternal(`${papagoTranslate}${query}`)
         })
@@ -116,8 +131,18 @@ function createWindow() {
             let query = clipboard.readText()
             // 마지막에 입력된 클립보드의 텍스트를 번역한다
 
-            childGoogle.loadURL(`${googleTranslateEn}${query}`)
-            childPapago.loadURL(`${papagoTranslateEn}${query}`)
+            if(googleStat){
+                childGoogle.loadURL(`${googleTranslateEn}${query}`)
+                childGoogle.setAlwaysOnTop(true)
+                childGoogle.setAlwaysOnTop(false)
+            }
+
+            if(papagoStat){
+                childPapago.loadURL(`${papagoTranslateEn}${query}`)
+                childPapago.setAlwaysOnTop(true)
+                childPapago.setAlwaysOnTop(false)
+            }
+
             // shell.openExternal(`${googleTranslate}${query}`)
             // shell.openExternal(`${papagoTranslate}${query}`)
         })
