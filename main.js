@@ -11,7 +11,7 @@ function createWindow() {
     const top = new BrowserWindow({
         width: 700,
         // width: 450,
-        height: 770,
+        height: 830,
         // height: 312,
         webPreferences: {
             nodeIntegration: true,
@@ -20,9 +20,9 @@ function createWindow() {
         maximizable: false
     })
 
-    let x = top.getPosition()[0]
-    let y = top.getPosition()[1] + -300
-    top.setPosition(x, y)
+    // let x = top.getPosition()[0]
+    // let y = top.getPosition()[1] + -300
+    // top.setPosition(x, y)
     top.loadFile('index.html')
 
     let googleStat = false
