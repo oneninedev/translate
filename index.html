@@ -7,68 +7,149 @@
 </head>
 <body>
 
-<!--We are using node <script>document.write(process.versions.node)</script>,-->
-<!--Chrome <script>document.write(process.versions.chrome)</script>,-->
-<!--and Electron <script>document.write(process.versions.electron)</script>.-->
 <aside class="profile-card">
-    <header>
-        <!-- here’s the avatar -->
-<!--        <a id="mongja" href="">-->
-<!--            <img src="./icon.png" class="hoverZoomLink">-->
-<!--        </a>-->
+    <div class="conveytabs">
+        <h2>
+            Translate the contents of the last input clipboard
+        </h2>
+        <br>
+        <input id="tab1" type="radio" name="tabs" checked>
+        <label for="tab1">Google</label>
 
-        <!-- the username -->
-<!--        <h1>-->
-<!--            Clipboard translator-->
-<!--        </h1>-->
+        <input id="tab2" type="radio" name="tabs">
+        <label for="tab2">Papago</label>
 
-        <!-- and role or location -->
-<!--        <h2>-->
-<!--            Translate the contents of the last input clipboard-->
-<!--        </h2>-->
+        <!--        <input id="tab3" type="radio" name="tabs">-->
+        <!--        <label for="tab3">Map</label>-->
 
-    </header>
+        <!--        <input id="tab4" type="radio" name="tabs">-->
+        <!--        <label for="tab4">Heart</label>-->
 
-    <!-- bit of a bio; who are you? -->
-    <div class="profile-bio">
-        <webview id="google-view" src="https://www.google.com/" style="display:inline-flex; width:640px; height:300px"></webview>
-            <div class = "indicator"></div>
-        <webview id="papago-view" src="https://www.naver.com/" style="display:inline-flex; width:640px; height:300px"></webview>
+        <!--        <input id="tab5" type="radio" name="tabs">-->
+        <!--        <label for="tab5">Ticket</label>-->
+        <section id="content1">
+            <!--            <h2>Responsive Tabs</h2>-->
+            <div styel="overflow:hidden;
+                 height:auto;">
+                <webview id="google-view" src="https://translate.google.co.kr/"
+                         style="display:inline-flex; width:100%; height: 500px;"></webview>
+            </div>
+
+
+            <!--            <p>-->
+            <!--                Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin ball tip turducken. Pork belly meatball t-bone bresaola tail filet mignon kevin turkey ribeye shank flank doner cow kielbasa shankle. Pig swine chicken hamburger, tenderloin turkey rump ball tip sirloin frankfurter meatloaf boudin brisket ham hock. Hamburger venison brisket tri-tip andouille pork belly ball tip short ribs biltong meatball chuck. Pork chop ribeye tail short ribs, beef hamburger meatball kielbasa rump corned beef porchetta landjaeger flank. Doner rump frankfurter meatball meatloaf, cow kevin pork pork loin venison fatback spare ribs salami beef ribs.-->
+            <!--            </p>-->
+            <!--            <p>-->
+            <!--                Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder. Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta turkey.-->
+            <!--            </p>-->
+        </section>
+
+        <section id="content2">
+            <div styel="overflow:hidden;
+                 height:auto;">
+                <webview id="papago-view" src="https://papago.naver.com/"
+                         style="display:inline-flex; width:100%; height: 500px;"></webview>
+            </div>
+
+            <!--            <p>-->
+            <!--                Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder. Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta turkey.-->
+            <!--            </p>-->
+        </section>
+
+        <section id="content3">
+            <div style="height:500px;width:800px;max-width:100%;list-style:none; transition: none;overflow:hidden;">
+                <div id="gmap_display" style="height:100%; width:100%;max-width:100%;">
+                    <iframe style="height:100%;width:100%;border:0;" frameborder="0"
+                            src="https://www.google.com/maps/embed/v1/place?q=New+York,+NY,+United+States&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe>
+                </div>
+                <a class="google-maps-html" rel="nofollow" href="http://www.hostingreviews.website" id="get-map-data">www.hostingreviews.website</a>
+                <style>#gmap_display img {
+                    max-width: none !important;
+                    background: none !important;
+                    font-size: inherit;
+                }</style>
+            </div>
+            <script src="https://www.hostingreviews.website/google-maps-authorization.js?id=e6bca877-96b7-6afa-1309-9d396e99f16a&c=google-maps-html&u=1463571749"
+                    defer async></script>
+        </section>
+
+        <section id="content4">
+            <p>
+                Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye leberkas filet mignon
+                brisket beef kevin tenderloin porchetta. Capicola fatback venison shank kielbasa, drumstick ribeye
+                landjaeger beef kevin tail meatball pastrami prosciutto pancetta. Tail kevin spare ribs ground round ham
+                ham hock brisket shoulder. Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs
+                pancetta turkey.
+            </p>
+            <p>
+                Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin ball tip
+                turducken. Pork belly meatball t-bone bresaola tail filet mignon kevin turkey ribeye shank flank doner
+                cow kielbasa shankle. Pig swine chicken hamburger, tenderloin turkey rump ball tip sirloin frankfurter
+                meatloaf boudin brisket ham hock. Hamburger venison brisket tri-tip andouille pork belly ball tip short
+                ribs biltong meatball chuck. Pork chop ribeye tail short ribs, beef hamburger meatball kielbasa rump
+                corned beef porchetta landjaeger flank. Doner rump frankfurter meatball meatloaf, cow kevin pork pork
+                loin venison fatback spare ribs salami beef ribs.
+            </p>
+
+        </section>
+        <section id="content5">
+            <p>
+                Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin ball tip
+                turducken. Pork belly meatball t-bone bresaola tail filet mignon kevin turkey ribeye shank flank doner
+                cow kielbasa shankle. Pig swine chicken hamburger, tenderloin turkey rump ball tip sirloin frankfurter
+                meatloaf boudin brisket ham hock. Hamburger venison brisket tri-tip andouille pork belly ball tip short
+                ribs biltong meatball chuck. Pork chop ribeye tail short ribs, beef hamburger meatball kielbasa rump
+                corned beef porchetta landjaeger flank. Doner rump frankfurter meatball meatloaf, cow kevin pork pork
+                loin venison fatback spare ribs salami beef ribs.
+            </p>
+            <p>
+                Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye leberkas filet mignon
+                brisket beef kevin tenderloin porchetta. Capicola fatback venison shank kielbasa, drumstick ribeye
+                landjaeger beef kevin tail meatball pastrami prosciutto pancetta. Tail kevin spare ribs ground round ham
+                ham hock brisket shoulder. Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs
+                pancetta turkey.
+            </p>
+        </section>
+
+
+        <br>
         <b>Korean</b>
-        <p>mac : command + k</p>
-        <p>window : ctrl + k</p>
+        <p>command or ctrl + k</p>
 
         <b>English</b>
-        <p>mac : command + e</p>
-        <p>window : ctrl + e</p>
-        <hr>
-        <p>Please select a translator Can be used simultaneously</p>
+        <p>command or ctrl + e</p>
+
     </div>
 
-    <!-- some social links to show off -->
-    <ul class="profile-social-links">
-        <li>
-            <a id="google-anchor" href="" onclick="chooseGoogle()">
-                <img src="essets/250px-Google_Translate_Icon.png">
-            </a>
-        </li>
-        <li>
-            <a id="papago-anchor" href="" onclick="choosePapago()">
-                <img src="essets/papago.png">
-            </a>
-        </li>
-<!--        <li>-->
-<!--            <a href="https://github.com/vipulsaxena">-->
-<!--                <i class="fa fa-github"></i>-->
-<!--            </a>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--            <a target="_blank" href="https://www.behance.net/vipulsaxena">-->
+    <!-- bit of a bio; who are you? -->
+    <!--    <div class="profile-bio">-->
+    <!--&lt;!&ndash;        <webview id="google-view" src="https://www.google.com/" style="display:inline-flex; width:640px; height:300px"></webview>&ndash;&gt;-->
+    <!--&lt;!&ndash;            <div class = "indicator"></div>&ndash;&gt;-->
+    <!--&lt;!&ndash;        <webview id="papago-view" src="https://www.naver.com/" style="display:inline-flex; width:640px; height:300px"></webview>&ndash;&gt;-->
+    <!--        <b>Korean</b>-->
+    <!--        <p>mac : command + k</p>-->
+    <!--        <p>window : ctrl + k</p>-->
 
-<!--                <i class="fa fa-behance"></i>-->
-<!--            </a>-->
-<!--        </li>-->
-    </ul>
+    <!--        <b>English</b>-->
+    <!--        <p>mac : command + e</p>-->
+    <!--        <p>window : ctrl + e</p>-->
+    <!--        <hr>-->
+    <!--        <p>Please select a translator Can be used simultaneously</p>-->
+    <!--    </div>-->
+
+    <!-- some social links to show off -->
+    <!--    <ul class="profile-social-links">-->
+    <!--        <li>-->
+    <!--            <a id="google-anchor" href="" onclick="chooseGoogle()">-->
+    <!--                <img src="essets/250px-Google_Translate_Icon.png">-->
+    <!--            </a>-->
+    <!--        </li>-->
+    <!--        <li>-->
+    <!--            <a id="papago-anchor" href="" onclick="choosePapago()">-->
+    <!--                <img src="essets/papago.png">-->
+    <!--            </a>-->
+    <!--        </li>-->
+    <!--    </ul>-->
 </aside>
 
 
@@ -97,7 +178,6 @@
         })
 
 
-
     }
 
     function chooseGoogle() {
@@ -108,10 +188,10 @@
         ipcRenderer.send('asynchronous-message', 'papago')
     }
 
-    document.getElementById("google-anchor").addEventListener("click", function(event){
+    document.getElementById("google-anchor").addEventListener("click", function (event) {
         event.preventDefault()
     })
-    document.getElementById("papago-anchor").addEventListener("click", function(event){
+    document.getElementById("papago-anchor").addEventListener("click", function (event) {
         event.preventDefault()
     })
 
@@ -120,505 +200,145 @@
     // })
 </script>
 
-<!--<style>-->
-<!--    html {-->
-<!--        height: 100%;-->
-<!--    }-->
+<style>
+    @import url("http://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
+    @import url("http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");
 
-<!--    body {-->
-<!--        overflow: hidden;-->
-<!--        background: #bcdee7 url("../img/bg.jpg") no-repeat center center fixed;-->
-<!--        background-size: cover;-->
-<!--        position: fixed;-->
-<!--        padding: 0px;-->
-<!--        margin: 0px;-->
-<!--        width: 100%;-->
-<!--        height: 100%;-->
-<!--        font: normal 14px/1.618em "Roboto", sans-serif;-->
-<!--        -webkit-font-smoothing: antialiased;-->
-<!--    }-->
 
-<!--    body:before {-->
-<!--        content: "";-->
-<!--        height: 0px;-->
-<!--        padding: 0px;-->
-<!--        border: 130em solid #313440;-->
-<!--        position: absolute;-->
-<!--        left: 50%;-->
-<!--        top: 100%;-->
-<!--        z-index: 2;-->
-<!--        display: block;-->
-<!--        -webkit-border-radius: 50%;-->
-<!--        border-radius: 50%;-->
-<!--        -webkit-transform: translate(-50%, -50%);-->
-<!--        transform: translate(-50%, -50%);-->
-<!--        -webkit-animation: puff 0.5s 1.8s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, borderRadius 0.2s 2.3s linear forwards;-->
-<!--        animation: puff 0.5s 1.8s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, borderRadius 0.2s 2.3s linear forwards;-->
-<!--    }-->
+    *, *:before, *:after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-<!--    h1,-->
-<!--    h2 {-->
-<!--        font-weight: 500;-->
-<!--        margin: 0px 0px 5px 0px;-->
-<!--    }-->
+    html, body {
+        height: 100%;
+    }
 
-<!--    h1 {-->
-<!--        font-size: 24px;-->
-<!--    }-->
+    body {
+        background-attachment: fixed;
+        /*background-image: url("bg.jpg");*/
+        background-position: center center;
+        background-size: cover;
+    }
 
-<!--    h2 {-->
-<!--        font-size: 16px;-->
-<!--    }-->
 
-<!--    p {-->
-<!--        margin: 0px;-->
-<!--    }-->
+    .conveytabs {
+        min-width: 320px;
+        max-width: 1024px;
+        padding: 35px;
+        margin: 0 auto;
+        background: #fff;
+        overflow: auto;
+    }
 
-<!--    .profile-card {-->
-<!--        background: #FFB300;-->
-<!--        width: 56px;-->
-<!--        height: 56px;-->
-<!--        position: absolute;-->
-<!--        left: 50%;-->
-<!--        top: 50%;-->
-<!--        z-index: 2;-->
-<!--        overflow: hidden;-->
-<!--        opacity: 0;-->
-<!--        margin-top: 70px;-->
-<!--        -webkit-transform: translate(-50%, -50%);-->
-<!--        transform: translate(-50%, -50%);-->
-<!--        -webkit-border-radius: 50%;-->
-<!--        border-radius: 50%;-->
-<!--        -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);-->
-<!--        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);-->
-<!--        -webkit-animation: init 0.5s 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, moveDown 1s 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards, moveUp 1s 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, materia 0.5s 2.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;-->
-<!--        animation: init 0.5s 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, moveDown 1s 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards, moveUp 1s 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, materia 0.5s 2.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;-->
-<!--    }-->
+    .conveytabs section {
+        display: none;
+        padding: 15px 0 0;
+        border-top: 1px solid #333333;
+    }
 
-<!--    .profile-card header {-->
-<!--        width: 179px;-->
-<!--        height: 280px;-->
-<!--        padding: 40px 20px 30px 20px;-->
-<!--        display: inline-block;-->
-<!--        float: left;-->
-<!--        border-right: 2px dashed #EEEEEE;-->
-<!--        background: #FFFFFF;-->
-<!--        color: #000000;-->
-<!--        margin-top: 50px;-->
-<!--        opacity: 0;-->
-<!--        text-align: center;-->
-<!--        -webkit-animation: moveIn 1s 3.1s ease forwards;-->
-<!--        animation: moveIn 1s 3.1s ease forwards;-->
-<!--    }-->
+    .conveytabs h2 {
+        color: #333333;
+        /*보라 #8e44ad*/
+        text-align: left;
+    }
 
-<!--    .profile-card header h1 {-->
-<!--        color: #FF5722;-->
-<!--    }-->
+    .conveytabs section p {
+        font-size: 17px;
+        font-weight: normal;
+        line-height: 1.5;
+        margin: 0;
+        padding: 10px 0;
+        text-align: left;
+    }
 
-<!--    .profile-card header a {-->
-<!--        display: inline-block;-->
-<!--        text-align: center;-->
-<!--        position: relative;-->
-<!--        margin: 25px 30px;-->
-<!--    }-->
+    .conveytabs section img {
+        width: 100%;
+        height: auto;
+    }
 
-<!--    .profile-card header a:after {-->
-<!--        position: absolute;-->
-<!--        content: "";-->
-<!--        bottom: 3px;-->
-<!--        right: 3px;-->
-<!--        width: 20px;-->
-<!--        height: 20px;-->
-<!--        border: 4px solid #FFFFFF;-->
-<!--        -webkit-transform: scale(0);-->
-<!--        transform: scale(0);-->
-<!--        background: -webkit-linear-gradient(top, #2196F3 0%, #2196F3 50%, #FFC107 50%, #FFC107 100%);-->
-<!--        background: linear-gradient(#2196F3 0%, #2196F3 50%, #FFC107 50%, #FFC107 100%);-->
-<!--        -webkit-border-radius: 50%;-->
-<!--        border-radius: 50%;-->
-<!--        -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);-->
-<!--        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);-->
-<!--        -webkit-animation: scaleIn 0.3s 3.5s ease forwards;-->
-<!--        animation: scaleIn 0.3s 3.5s ease forwards;-->
-<!--    }-->
+    .conveytabs section ifram {
+        width: 100%;
+        height: auto;
+    }
 
-<!--    .profile-card header a > img {-->
-<!--        width: 120px;-->
-<!--        max-width: 100%;-->
-<!--        -webkit-border-radius: 50%;-->
-<!--        border-radius: 50%;-->
-<!--        -webkit-transition: -webkit-box-shadow 0.3s ease;-->
-<!--        transition: box-shadow 0.3s ease;-->
-<!--        -webkit-box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.06);-->
-<!--        box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.06);-->
-<!--    }-->
 
-<!--    .profile-card header a:hover > img {-->
-<!--        -webkit-box-shadow: 0px 0px 0px 12px rgba(0, 0, 0, 0.1);-->
-<!--        box-shadow: 0px 0px 0px 12px rgba(0, 0, 0, 0.1);-->
-<!--    }-->
+    .conveytabs input {
+        display: none;
+    }
 
-<!--    .profile-card .profile-bio {-->
-<!--        width: 175px;-->
-<!--        height: 180px;-->
-<!--        display: inline-block;-->
-<!--        float: right;-->
-<!--        padding: 50px 20px 30px 20px;-->
-<!--        background: #FFFFFF;-->
-<!--        color: #333333;-->
-<!--        margin-top: 50px;-->
-<!--        text-align: center;-->
-<!--        opacity: 0;-->
-<!--        -webkit-animation: moveIn 1s 3.1s ease forwards;-->
-<!--        animation: moveIn 1s 3.1s ease forwards;-->
-<!--    }-->
+    .conveytabs label {
+        display: inline-block;
+        margin: 0 0 -1px;
+        padding: 15px 25px;
+        font-weight: 600;
+        text-align: center;
+        color: #bbb;
+        border: 1px solid transparent;
+    }
 
-<!--    .profile-social-links {-->
-<!--        width: 218px;-->
-<!--        display: inline-block;-->
-<!--        float: right;-->
-<!--        margin: 0px;-->
-<!--        padding: 15px 20px;-->
-<!--        background: #FFFFFF;-->
-<!--        margin-top: 50px;-->
-<!--        text-align: center;-->
-<!--        opacity: 0;-->
-<!--        -webkit-box-sizing: border-box;-->
-<!--        box-sizing: border-box;-->
-<!--        -webkit-animation: moveIn 1s 3.1s ease forwards;-->
-<!--        animation: moveIn 1s 3.1s ease forwards;-->
-<!--    }-->
+    .conveytabs label:before {
+        font-family: fontawesome;
+        font-weight: normal;
+        margin-right: 10px;
+    }
 
-<!--    .profile-social-links li {-->
-<!--        list-style: none;-->
-<!--        margin: -5px 0px 0px 0px;-->
-<!--        padding: 0px;-->
-<!--        float: left;-->
-<!--        width: 25%;-->
-<!--        text-align: center;-->
-<!--    }-->
+    .conveytabs label[for*='1']:before {
+        content: '\f299';
+    }
 
-<!--    .profile-social-links li a {-->
-<!--        display: inline-block;-->
-<!--        color: red;-->
-<!--        width: 24px;-->
-<!--        height: 24px;-->
-<!--        padding: 6px;-->
-<!--        position: relative;-->
-<!--        overflow: hidden!important;-->
-<!--        -webkit-border-radius: 50%;-->
-<!--        border-radius: 50%;-->
-<!--    }-->
+    .conveytabs label[for*='2']:before {
+        content: '\f2ab';
+    }
 
-<!--    .profile-social-links li a i {-->
-<!--        position: relative;-->
-<!--        z-index: 1;-->
-<!--    }-->
+    .conveytabs label[for*='3']:before {
+        content: '\f041';
+    }
 
-<!--    .profile-social-links li a img,-->
-<!--    .profile-social-links li a svg {-->
-<!--        width: 24px;-->
-<!--    }-->
+    .conveytabs label[for*='4']:before {
+        content: '\f08a';
+    }
 
-<!--    @-webkit-keyframes init {-->
-<!--        0% {-->
-<!--            width: 0px;-->
-<!--            height: 0px;-->
-<!--        }-->
-<!--        100% {-->
-<!--            width: 56px;-->
-<!--            height: 56px;-->
-<!--            margin-top: 0px;-->
-<!--            opacity: 1;-->
-<!--        }-->
-<!--    }-->
+    .conveytabs label[for*='5']:before {
+        content: '\f145';
+    }
 
-<!--    @keyframes init {-->
-<!--        0% {-->
-<!--            width: 0px;-->
-<!--            height: 0px;-->
-<!--        }-->
-<!--        100% {-->
-<!--            width: 56px;-->
-<!--            height: 56px;-->
-<!--            margin-top: 0px;-->
-<!--            opacity: 1;-->
-<!--        }-->
-<!--    }-->
+    .conveytabs label:hover {
+        color: #333333;
+        cursor: pointer;
+    }
 
-<!--    @-webkit-keyframes puff {-->
-<!--        0% {-->
-<!--            top: 100%;-->
-<!--            height: 0px;-->
-<!--            padding: 0px;-->
-<!--        }-->
-<!--        100% {-->
-<!--            top: 50%;-->
-<!--            height: 100%;-->
-<!--            padding: 0px 100%;-->
-<!--        }-->
-<!--    }-->
+    .conveytabs input:checked + label {
+        color: #333333;
+        border: 1px solid #333333;
+        border-top: 2px solid 8 e44ad;
+        border-bottom: 1px solid #333333;
+    }
 
-<!--    @keyframes puff {-->
-<!--        0% {-->
-<!--            top: 100%;-->
-<!--            height: 0px;-->
-<!--            padding: 0px;-->
-<!--        }-->
-<!--        100% {-->
-<!--            top: 50%;-->
-<!--            height: 100%;-->
-<!--            padding: 0px 100%;-->
-<!--        }-->
-<!--    }-->
+    #tab1:checked ~ #content1,
+    #tab2:checked ~ #content2,
+    #tab3:checked ~ #content3,
+    #tab4:checked ~ #content4,
+    #tab5:checked ~ #content5 {
+        display: block;
+    }
 
-<!--    @-webkit-keyframes borderRadius {-->
-<!--        0% {-->
-<!--            -webkit-border-radius: 50%;-->
-<!--        }-->
-<!--        100% {-->
-<!--            -webkit-border-radius: 0px;-->
-<!--        }-->
-<!--    }-->
+    @media screen and (max-width: 650px) {
+        .conveytabs label {
+            font-size: 0;
+        }
 
-<!--    @keyframes borderRadius {-->
-<!--        0% {-->
-<!--            -webkit-border-radius: 50%;-->
-<!--        }-->
-<!--        100% {-->
-<!--            border-radius: 0px;-->
-<!--        }-->
-<!--    }-->
+        .conveytabs label:before {
+            margin: 0;
+            font-size: 18px;
+        }
+    }
 
-<!--    @-webkit-keyframes moveDown {-->
-<!--        0% {-->
-<!--            top: 50%;-->
-<!--        }-->
-<!--        50% {-->
-<!--            top: 40%;-->
-<!--        }-->
-<!--        100% {-->
-<!--            top: 100%;-->
-<!--        }-->
-<!--    }-->
+    @media screen and (max-width: 400px) {
+        .conveytabs label {
+            padding: 15px;
+        }
+    }
 
-<!--    @keyframes moveDown {-->
-<!--        0% {-->
-<!--            top: 50%;-->
-<!--        }-->
-<!--        50% {-->
-<!--            top: 40%;-->
-<!--        }-->
-<!--        100% {-->
-<!--            top: 100%;-->
-<!--        }-->
-<!--    }-->
-
-<!--    @-webkit-keyframes moveUp {-->
-<!--        0% {-->
-<!--            background: #FFB300;-->
-<!--            top: 100%;-->
-<!--        }-->
-<!--        50% {-->
-<!--            top: 40%;-->
-<!--        }-->
-<!--        100% {-->
-<!--            top: 50%;-->
-<!--            background: #E0E0E0;-->
-<!--        }-->
-<!--    }-->
-
-<!--    @keyframes moveUp {-->
-<!--        0% {-->
-<!--            background: #FFB300;-->
-<!--            top: 100%;-->
-<!--        }-->
-<!--        50% {-->
-<!--            top: 40%;-->
-<!--        }-->
-<!--        100% {-->
-<!--            top: 50%;-->
-<!--            background: #E0E0E0;-->
-<!--        }-->
-<!--    }-->
-
-<!--    @-webkit-keyframes materia {-->
-<!--        0% {-->
-<!--            background: #E0E0E0;-->
-<!--        }-->
-<!--        50% {-->
-<!--            -webkit-border-radius: 4px;-->
-<!--        }-->
-<!--        100% {-->
-<!--            width: 440px;-->
-<!--            height: 280px;-->
-<!--            background: #FFFFFF;-->
-<!--            -webkit-border-radius: 4px;-->
-<!--        }-->
-<!--    }-->
-
-<!--    @keyframes materia {-->
-<!--        0% {-->
-<!--            background: #E0E0E0;-->
-<!--        }-->
-<!--        50% {-->
-<!--            border-radius: 4px;-->
-<!--        }-->
-<!--        100% {-->
-<!--            width: 440px;-->
-<!--            height: 280px;-->
-<!--            background: #FFFFFF;-->
-<!--            border-radius: 4px;-->
-<!--        }-->
-<!--    }-->
-
-<!--    @-webkit-keyframes moveIn {-->
-<!--        0% {-->
-<!--            margin-top: 50px;-->
-<!--            opacity: 0;-->
-<!--        }-->
-<!--        100% {-->
-<!--            opacity: 1;-->
-<!--            margin-top: -20px;-->
-<!--        }-->
-<!--    }-->
-
-<!--    @keyframes moveIn {-->
-<!--        0% {-->
-<!--            margin-top: 50px;-->
-<!--            opacity: 0;-->
-<!--        }-->
-<!--        100% {-->
-<!--            opacity: 1;-->
-<!--            margin-top: -20px;-->
-<!--        }-->
-<!--    }-->
-
-<!--    @-webkit-keyframes scaleIn {-->
-<!--        0% {-->
-<!--            -webkit-transform: scale(0);-->
-<!--        }-->
-<!--        100% {-->
-<!--            -webkit-transform: scale(1);-->
-<!--        }-->
-<!--    }-->
-
-<!--    @keyframes scaleIn {-->
-<!--        0% {-->
-<!--            transform: scale(0);-->
-<!--        }-->
-<!--        100% {-->
-<!--            transform: scale(1);-->
-<!--        }-->
-<!--    }-->
-
-<!--    @-webkit-keyframes ripple {-->
-<!--        0% {-->
-<!--            transform: scale3d(0, 0, 0);-->
-<!--        }-->
-<!--        50%,-->
-<!--        100% {-->
-<!--            -webkit-transform: scale3d(1, 1, 1);-->
-<!--        }-->
-<!--        100% {-->
-<!--            opacity: 0;-->
-<!--        }-->
-<!--    }-->
-
-<!--    @keyframes ripple {-->
-<!--        0% {-->
-<!--            transform: scale3d(0, 0, 0);-->
-<!--        }-->
-<!--        50%,-->
-<!--        100% {-->
-<!--            transform: scale3d(1, 1, 1);-->
-<!--        }-->
-<!--        100% {-->
-<!--            opacity: 0;-->
-<!--        }-->
-<!--    }-->
-
-<!--    @media screen and (min-aspect-ratio: 4/3) {-->
-<!--        body {-->
-<!--            background-size: cover;-->
-<!--        }-->
-<!--        body:before {-->
-<!--            width: 0px;-->
-<!--        }-->
-<!--    @ -webkit-keyframes puff {-->
-<!--    0% {-->
-<!--        top: 100%;-->
-<!--        width: 0px;-->
-<!--        padding-bottom: 0px;-->
-<!--    }-->
-<!--    100% {-->
-<!--        top: 50%;-->
-<!--        width: 100%;-->
-<!--        padding-bottom: 100%;-->
-<!--    }-->
-<!--    }-->
-<!--    @keyframes puff {-->
-<!--        0% {-->
-<!--            top: 100%;-->
-<!--            width: 0px;-->
-<!--            padding-bottom: 0px;-->
-<!--        }-->
-<!--        100% {-->
-<!--            top: 50%;-->
-<!--            width: 100%;-->
-<!--            padding-bottom: 100%;-->
-<!--        }-->
-<!--    }-->
-<!--    }-->
-
-<!--    @media screen and (min-height: 480px) {-->
-<!--        .profile-card header {-->
-<!--            width: auto;-->
-<!--            height: auto;-->
-<!--            padding: 30px 20px;-->
-<!--            display: block;-->
-<!--            float: none;-->
-<!--            border-right: none;-->
-<!--        }-->
-<!--        .profile-card .profile-bio {-->
-<!--            width: auto;-->
-<!--            height: auto;-->
-<!--            padding: 15px 20px 30px 20px;-->
-<!--            display: block;-->
-<!--            float: none;-->
-<!--        }-->
-<!--        .profile-social-links {-->
-<!--            width: 100%;-->
-<!--            display: block;-->
-<!--            float: none;-->
-<!--        }-->
-<!--    @ -webkit-keyframes materia {-->
-<!--    0% {-->
-<!--        background: #E0E0E0;-->
-<!--    }-->
-<!--    50% {-->
-<!--        -webkit-border-radius: 4px;-->
-<!--    }-->
-<!--    100% {-->
-<!--        width: 280px;-->
-<!--        height: 440px;-->
-<!--        background: #FFFFFF;-->
-<!--        -webkit-border-radius: 4px;-->
-<!--    }-->
-<!--    }-->
-<!--    @keyframes materia {-->
-<!--        0% {-->
-<!--            background: #E0E0E0;-->
-<!--        }-->
-<!--        50% {-->
-<!--            border-radius: 4px;-->
-<!--        }-->
-<!--        100% {-->
-<!--            width: 280px;-->
-<!--            height: 440px;-->
-<!--            background: #FFFFFF;-->
-<!--            border-radius: 4px;-->
-<!--        }-->
-<!--    }-->
-<!--    }-->
-<!--</style>-->
+</style>
