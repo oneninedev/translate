@@ -81,41 +81,13 @@
     onload = () => {
         const googleView = document.getElementById('google-view')
         googleView.addEventListener('dom-ready', () => {
-            // webview.openDevTools()
-            // webview.loadURL('https://www.naver.com/')
         })
-        // const indicator = document.querySelector('.indicator')
-
-        // const loadstart = () => {
-        //     indicator.innerText = 'loading...'
-        // }
-        //
-        // const loadstop = () => {
-        //     indicator.innerText = ''
-        // }
-        //
-        // googleView.addEventListener('did-start-loading', loadstart)
-        // googleView.addEventListener('did-stop-loading', loadstop)
 
         ipcRenderer.on('ping', (event, arg) => {
             console.log(arg) // "pong"이 출력됩니다.
             googleView.loadURL(arg)
         })
-        // const indicator = document.querySelector('.indicator')
-
-        // const loadstart = () => {
-        //     indicator.innerText = 'loading...'
-        // }
-        //
-        // const loadstop = () => {
-        //     indicator.innerText = ''
-        // }
-
-        // webview.addEventListener('did-start-loading', loadstart)
-        // webview.addEventListener('did-stop-loading', loadstop)
     }
-
-
 
     function chooseGoogle() {
         ipcRenderer.send('asynchronous-message', 'google')
