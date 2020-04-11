@@ -11,7 +11,7 @@ function createWindow() {
     const top = new BrowserWindow({
         width: 700,
         // width: 450,
-        height: 830,
+        height: 870, // 윈도우는 870으로 해야 화살표 안생김 
         // height: 312,
         webPreferences: {
             nodeIntegration: true,
