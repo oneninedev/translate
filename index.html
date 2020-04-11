@@ -9,9 +9,9 @@
 
 <aside class="profile-card">
     <div class="conveytabs">
-        <h2>
-            Translate the contents of the last input clipboard
-        </h2>
+        <h3>
+            Translate the contents of the last clipboard using a shortcut
+        </h3>
         <br>
         <input id="tab1" type="radio" name="tabs" checked>
         <label for="tab1">Google</label>
@@ -111,14 +111,9 @@
             </p>
         </section>
 
-
         <br>
-        <b>Korean</b>
-        <p>command or ctrl + k</p>
-
-        <b>English</b>
-        <p>command or ctrl + e</p>
-
+        <p><b>Korean : </b>cmd or ctrl + k</p>
+        <p><b>English : </b>cmd or ctrl + e</p>
     </div>
 
     <!-- bit of a bio; who are you? -->
@@ -180,20 +175,20 @@
 
     }
 
-    function chooseGoogle() {
-        ipcRenderer.send('asynchronous-message', 'google')
-    }
+    // function chooseGoogle() {
+    //     ipcRenderer.send('asynchronous-message', 'google')
+    // }
+    //
+    // function choosePapago() {
+    //     ipcRenderer.send('asynchronous-message', 'papago')
+    // }
 
-    function choosePapago() {
-        ipcRenderer.send('asynchronous-message', 'papago')
-    }
-
-    document.getElementById("google-anchor").addEventListener("click", function (event) {
-        event.preventDefault()
-    })
-    document.getElementById("papago-anchor").addEventListener("click", function (event) {
-        event.preventDefault()
-    })
+    // document.getElementById("google-anchor").addEventListener("click", function (event) {
+    //     event.preventDefault()
+    // })
+    // document.getElementById("papago-anchor").addEventListener("click", function (event) {
+    //     event.preventDefault()
+    // })
 
     // document.getElementById("mongja").addEventListener("click", function(event){
     //     event.preventDefault()

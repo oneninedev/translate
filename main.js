@@ -11,7 +11,7 @@ function createWindow() {
     const top = new BrowserWindow({
         width: 700,
         // width: 450,
-        height: 810,
+        height: 770,
         // height: 312,
         webPreferences: {
             nodeIntegration: true,
