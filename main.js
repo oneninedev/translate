@@ -12,7 +12,8 @@ function createWindow() {
         width: 450,
         height: 312,
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            webviewTag: true
         },
         maximizable: false
     })
@@ -33,9 +34,8 @@ function createWindow() {
     ipcMain.on('asynchronous-message', (event, arg) => {
         // console.log(arg) // 이벤트를 전달받는다 'google' or 'papago'
         // event.reply('asynchronous-reply', 'pong') // 이벤트 발생자에게 반환시 사용
-
-        if(arg === 'google'){
-            if(googleStat === false){
+        if (arg === 'google') {
+            if (googleStat === false) {
                 childGoogle = new BrowserWindow({
                     width: 600,
                     height: 400,
@@ -43,7 +43,7 @@ function createWindow() {
                     // closable: false,
                     // show:false
                 })
-                childGoogle.on('close', function(e) { //   <---- Catch close event
+                childGoogle.on('close', function (e) { //   <---- Catch close event
                     // e.preventDefault()
                     // childPapago.minimize()
                     googleStat = false
@@ -62,8 +62,8 @@ function createWindow() {
             childGoogle.close()
         }
 
-        if(arg === 'papago'){
-            if(papagoStat === false){
+        if (arg === 'papago') {
+            if (papagoStat === false) {
                 childPapago = new BrowserWindow({
                     width: 600,
                     height: 400,
@@ -71,7 +71,7 @@ function createWindow() {
                     // closable: false,
                     // show:false
                 })
-                childPapago.on('close', function(e) { //   <---- Catch close event
+                childPapago.on('close', function (e) { //   <---- Catch close event
                     // e.preventDefault()
                     // childPapago.minimize()
                     papagoStat = false
@@ -98,16 +98,18 @@ function createWindow() {
             // console.log(document.getElementById('foo'))
             // document.getElementById("foo").href = "http://www.address.com";
 
+
             let query = clipboard.readText()
+            top.webContents.send('ping', `${googleTranslate}${query}`)
             // 마지막에 입력된 클립보드의 텍스트를 번역한다
-            if(googleStat){ // 사용자가 stat을 비활성화시 동작하지 않음
+            if (googleStat) { // 사용자가 stat을 비활성화시 동작하지 않음
                 childGoogle.loadURL(`${googleTranslate}${query}`)
                 childGoogle.restore() // 창이 최소
                 childGoogle.setAlwaysOnTop(true)
                 childGoogle.setAlwaysOnTop(false) // 최상단에 노출후 onTop 해제
             }
 
-            if(papagoStat){
+            if (papagoStat) {
                 childPapago.loadURL(`${papagoTranslate}${query}`)
                 childPapago.restore()
                 childPapago.setAlwaysOnTop(true)
@@ -127,14 +129,14 @@ function createWindow() {
             let query = clipboard.readText()
             // 마지막에 입력된 클립보드의 텍스트를 번역한다
 
-            if(googleStat){
+            if (googleStat) {
                 childGoogle.loadURL(`${googleTranslateEn}${query}`)
                 childGoogle.restore()
                 childGoogle.setAlwaysOnTop(true)
                 childGoogle.setAlwaysOnTop(false)
             }
 
-            if(papagoStat){
+            if (papagoStat) {
                 childPapago.loadURL(`${papagoTranslateEn}${query}`)
                 childPapago.restore()
                 childPapago.setAlwaysOnTop(true)
