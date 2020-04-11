@@ -11,7 +11,7 @@ function createWindow() {
     const top = new BrowserWindow({
         width: 700,
         // width: 450,
-        height: 600,
+        height: 810,
         // height: 312,
         webPreferences: {
             nodeIntegration: true,
@@ -104,6 +104,9 @@ function createWindow() {
             let query = clipboard.readText()
             top.webContents.send('pingGoogleKor', `${googleTranslate}${query}`)
             top.webContents.send("pingPapagoKor", `${papagoTranslate}${query}`)
+            top.restore() // 창이 최소
+            top.setAlwaysOnTop(true)
+            top.setAlwaysOnTop(false) // 최상단에 노출후 onTop 해제
             // 마지막에 입력된 클립보드의 텍스트를 번역한다
             // if (googleStat) { // 사용자가 stat을 비활성화시 동작하지 않음
             //     childGoogle.loadURL(`${googleTranslate}${query}`)
@@ -134,6 +137,9 @@ function createWindow() {
 
             top.webContents.send('pingGoogleKor', `${googleTranslateEn}${query}`)
             top.webContents.send("pingPapagoKor", `${papagoTranslateEn}${query}`)
+            top.restore() // 창이 최소화시 돌려준다
+            top.setAlwaysOnTop(true)
+            top.setAlwaysOnTop(false) // 최상단에 노출후 onTop 해제
 
             // if (googleStat) {
             //     childGoogle.loadURL(`${googleTranslateEn}${query}`)
