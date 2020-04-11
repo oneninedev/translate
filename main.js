@@ -9,8 +9,10 @@ function createWindow() {
     let papagoTranslateEn = 'https://papago.naver.com/?sk=auto&tk=en&st='
 
     const top = new BrowserWindow({
-        width: 450,
-        height: 312,
+        width: 700,
+        // width: 450,
+        height: 600,
+        // height: 312,
         webPreferences: {
             nodeIntegration: true,
             webviewTag: true
