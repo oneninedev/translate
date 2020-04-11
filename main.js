@@ -132,6 +132,9 @@ function createWindow() {
             let query = clipboard.readText()
             // 마지막에 입력된 클립보드의 텍스트를 번역한다
 
+            top.webContents.send('pingGoogleKor', `${googleTranslateEn}${query}`)
+            top.webContents.send("pingPapagoKor", `${papagoTranslateEn}${query}`)
+
             if (googleStat) {
                 childGoogle.loadURL(`${googleTranslateEn}${query}`)
                 childGoogle.restore()
