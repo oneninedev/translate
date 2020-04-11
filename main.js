@@ -102,7 +102,8 @@ function createWindow() {
 
 
             let query = clipboard.readText()
-            top.webContents.send('ping', `${googleTranslate}${query}`)
+            top.webContents.send('pingGoogleKor', `${googleTranslate}${query}`)
+            top.webContents.send("pingPapagoKor", `${papagoTranslate}${query}`)
             // 마지막에 입력된 클립보드의 텍스트를 번역한다
             if (googleStat) { // 사용자가 stat을 비활성화시 동작하지 않음
                 childGoogle.loadURL(`${googleTranslate}${query}`)
