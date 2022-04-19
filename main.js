@@ -2,11 +2,11 @@ const {app, globalShortcut, BrowserWindow, shell, clipboard, ipcMain} = require(
 
 function createWindow() {
     // 브라우저 창을 생성합니다.
-    let googleTranslate = 'https://translate.google.co.kr/?hl=ko&tab=TT&authuser=0#view=home&op=translate&sl=auto&tl=ko&text='
-    let googleTranslateEn = 'https://translate.google.co.kr/?hl=ko#view=home&op=translate&sl=auto&tl=en&text='
+    const googleTranslate = 'https://translate.google.co.kr/?hl=ko&tab=TT&authuser=0#view=home&op=translate&sl=auto&tl=ko&text='
+    const googleTranslateEn = 'https://translate.google.co.kr/?hl=ko#view=home&op=translate&sl=auto&tl=en&text='
 
-    let papagoTranslate = 'https://papago.naver.com/?sk=auto&tk=ko&st='
-    let papagoTranslateEn = 'https://papago.naver.com/?sk=auto&tk=en&st='
+    const papagoTranslate = 'https://papago.naver.com/?sk=auto&tk=ko&st='
+    const papagoTranslateEn = 'https://papago.naver.com/?sk=auto&tk=en&st='
 
     const top = new BrowserWindow({
         width: 700,
@@ -20,6 +20,19 @@ function createWindow() {
         maximizable: false
     })
 
+    const loadTranslate = (shortcut, googleURL, papagoURL) =>{
+        globalShortcut.register(shortcut, () => {
+            // 해당 콜백으로 사파리 브라우저를 오픈하고 쿼리스트링으로 크롬번역기를 호출한다
+            let query = clipboard.readText()
+            top.webContents.send('pingGoogleKor', `${googleURL}${query}`)
+            top.webContents.send("pingPapagoKor", `${papagoURL}${query}`)
+            top.restore() // 창이 최소
+            top.setAlwaysOnTop(true)
+            top.setAlwaysOnTop(false) // 최상단에 노출후 onTop 해제
+            // 마지막에 입력된 클립보드의 텍스트를 번역한다
+        })
+    }
+
     top.loadFile('index.html')
 
     // 개발자 도구를 엽니다.
@@ -28,27 +41,8 @@ function createWindow() {
     })
 
     app.whenReady().then(() => {
-        globalShortcut.register('CommandOrControl+k', () => {
-            // 해당 콜백으로 사파리 브라우저를 오픈하고 쿼리스트링으로 크롬번역기를 호출한다
-            let query = clipboard.readText()
-            top.webContents.send('pingGoogleKor', `${googleTranslate}${query}`)
-            top.webContents.send("pingPapagoKor", `${papagoTranslate}${query}`)
-            top.restore() // 창이 최소
-            top.setAlwaysOnTop(true)
-            top.setAlwaysOnTop(false) // 최상단에 노출후 onTop 해제
-            // 마지막에 입력된 클립보드의 텍스트를 번역한다
-        })
-
-        globalShortcut.register('CommandOrControl+e', () => {
-            let query = clipboard.readText()
-            // 마지막에 입력된 클립보드의 텍스트를 번역한다
-
-            top.webContents.send('pingGoogleKor', `${googleTranslateEn}${query}`)
-            top.webContents.send("pingPapagoKor", `${papagoTranslateEn}${query}`)
-            top.restore() // 창이 최소화시 돌려준다
-            top.setAlwaysOnTop(true)
-            top.setAlwaysOnTop(false) // 최상단에 노출후 onTop 해제
-        })
+        loadTranslate('CommandOrControl+k',googleTranslate,papagoTranslate)
+        loadTranslate('CommandOrControl+e',googleTranslateEn,papagoTranslateEn)
     })
 }
 
