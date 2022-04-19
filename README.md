@@ -15,7 +15,7 @@
 
 ### 기술
 - electron.js
-### 배포 명령어
+### 빌드
 ```
 yarn install
 yarn dist
