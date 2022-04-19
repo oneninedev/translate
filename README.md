@@ -16,7 +16,10 @@
 ### 기술
 - electron.js
 ### 배포 명령어
+```
+yarn install
 yarn dist
+```
 
 ### 참조문서
 #### 브라우저 실행
