@@ -18,30 +18,12 @@
 
         <input id="tab2" type="radio" name="tabs">
         <label for="tab2">Papago</label>
-
-        <!--        <input id="tab3" type="radio" name="tabs">-->
-        <!--        <label for="tab3">Map</label>-->
-
-        <!--        <input id="tab4" type="radio" name="tabs">-->
-        <!--        <label for="tab4">Heart</label>-->
-
-        <!--        <input id="tab5" type="radio" name="tabs">-->
-        <!--        <label for="tab5">Ticket</label>-->
         <section id="content1">
-            <!--            <h2>Responsive Tabs</h2>-->
             <div styel="overflow:hidden;
                  height:auto;">
                 <webview id="google-view" src="https://translate.google.co.kr/"
                          style="display:inline-flex; width:100%; height: 550px;"></webview>
             </div>
-
-
-            <!--            <p>-->
-            <!--                Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin ball tip turducken. Pork belly meatball t-bone bresaola tail filet mignon kevin turkey ribeye shank flank doner cow kielbasa shankle. Pig swine chicken hamburger, tenderloin turkey rump ball tip sirloin frankfurter meatloaf boudin brisket ham hock. Hamburger venison brisket tri-tip andouille pork belly ball tip short ribs biltong meatball chuck. Pork chop ribeye tail short ribs, beef hamburger meatball kielbasa rump corned beef porchetta landjaeger flank. Doner rump frankfurter meatball meatloaf, cow kevin pork pork loin venison fatback spare ribs salami beef ribs.-->
-            <!--            </p>-->
-            <!--            <p>-->
-            <!--                Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder. Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta turkey.-->
-            <!--            </p>-->
         </section>
 
         <section id="content2">
@@ -50,10 +32,6 @@
                 <webview id="papago-view" src="https://papago.naver.com/"
                          style="display:inline-flex; width:100%; height: 550px;"></webview>
             </div>
-
-            <!--            <p>-->
-            <!--                Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder. Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta turkey.-->
-            <!--            </p>-->
         </section>
 
         <section id="content3">
@@ -115,38 +93,7 @@
         <p><b>Korean : </b>cmd or ctrl + k</p>
         <p><b>English : </b>cmd or ctrl + e</p>
     </div>
-
-    <!-- bit of a bio; who are you? -->
-    <!--    <div class="profile-bio">-->
-    <!--&lt;!&ndash;        <webview id="google-view" src="https://www.google.com/" style="display:inline-flex; width:640px; height:300px"></webview>&ndash;&gt;-->
-    <!--&lt;!&ndash;            <div class = "indicator"></div>&ndash;&gt;-->
-    <!--&lt;!&ndash;        <webview id="papago-view" src="https://www.naver.com/" style="display:inline-flex; width:640px; height:300px"></webview>&ndash;&gt;-->
-    <!--        <b>Korean</b>-->
-    <!--        <p>mac : command + k</p>-->
-    <!--        <p>window : ctrl + k</p>-->
-
-    <!--        <b>English</b>-->
-    <!--        <p>mac : command + e</p>-->
-    <!--        <p>window : ctrl + e</p>-->
-    <!--        <hr>-->
-    <!--        <p>Please select a translator Can be used simultaneously</p>-->
-    <!--    </div>-->
-
-    <!-- some social links to show off -->
-    <!--    <ul class="profile-social-links">-->
-    <!--        <li>-->
-    <!--            <a id="google-anchor" href="" onclick="chooseGoogle()">-->
-    <!--                <img src="essets/250px-Google_Translate_Icon.png">-->
-    <!--            </a>-->
-    <!--        </li>-->
-    <!--        <li>-->
-    <!--            <a id="papago-anchor" href="" onclick="choosePapago()">-->
-    <!--                <img src="essets/papago.png">-->
-    <!--            </a>-->
-    <!--        </li>-->
-    <!--    </ul>-->
 </aside>
-
 
 </body>
 </html>
@@ -171,28 +118,8 @@
             console.log(arg) // "pong"이 출력됩니다.
             papagoView.loadURL(arg)
         })
-
-
     }
 
-    // function chooseGoogle() {
-    //     ipcRenderer.send('asynchronous-message', 'google')
-    // }
-    //
-    // function choosePapago() {
-    //     ipcRenderer.send('asynchronous-message', 'papago')
-    // }
-
-    // document.getElementById("google-anchor").addEventListener("click", function (event) {
-    //     event.preventDefault()
-    // })
-    // document.getElementById("papago-anchor").addEventListener("click", function (event) {
-    //     event.preventDefault()
-    // })
-
-    // document.getElementById("mongja").addEventListener("click", function(event){
-    //     event.preventDefault()
-    // })
 </script>
 
 <style>

@@ -20,87 +20,16 @@ function createWindow() {
         maximizable: false
     })
 
-    // let x = top.getPosition()[0]
-    // let y = top.getPosition()[1] + -300
-    // top.setPosition(x, y)
     top.loadFile('index.html')
-
-    let googleStat = false
-    let papagoStat = false
-
-    let childGoogle
-    let childPapago
 
     // 개발자 도구를 엽니다.
     // win.webContents.openDevTools()
     ipcMain.on('asynchronous-message', (event, arg) => {
-        // console.log(arg) // 이벤트를 전달받는다 'google' or 'papago'
-        // event.reply('asynchronous-reply', 'pong') // 이벤트 발생자에게 반환시 사용
-        // if (arg === 'google') {
-        //     if (googleStat === false) {
-        //         childGoogle = new BrowserWindow({
-        //             width: 600,
-        //             height: 400,
-        //             // parent: top,
-        //             // closable: false,
-        //             // show:false
-        //         })
-        //         childGoogle.on('close', function (e) { //   <---- Catch close event
-        //             // e.preventDefault()
-        //             // childPapago.minimize()
-        //             googleStat = false
-        //         })
-        //         childGoogle.loadURL(`${googleTranslate}`)
-        //
-        //         googleStat = true
-        //         // console.log(top.getPosition())
-        //         let x = top.getPosition()[0] - 375
-        //         let y = top.getPosition()[1] + 312
-        //         childGoogle.setPosition(x, y)
-        //         // childGoogle.show()
-        //         return
-        //     }
-        //     googleStat = false
-        //     childGoogle.close()
-        // }
-
-        // if (arg === 'papago') {
-        //     if (papagoStat === false) {
-        //         childPapago = new BrowserWindow({
-        //             width: 600,
-        //             height: 400,
-        //             // parent: top,
-        //             // closable: false,
-        //             // show:false
-        //         })
-        //         childPapago.on('close', function (e) { //   <---- Catch close event
-        //             // e.preventDefault()
-        //             // childPapago.minimize()
-        //             papagoStat = false
-        //         })
-        //         childPapago.loadURL(`${papagoTranslate}`)
-        //
-        //         papagoStat = true
-        //         // console.log(top.getPosition())
-        //         let x = top.getPosition()[0] + 225
-        //         let y = top.getPosition()[1] + 312
-        //         childPapago.setPosition(x, y)
-        //         // childPapago.show()
-        //         return
-        //     }
-        //     papagoStat = false
-        //     childPapago.close()
-        // }
     })
 
     app.whenReady().then(() => {
         globalShortcut.register('CommandOrControl+k', () => {
-            // console.log('CommandOrControl+X is pressed')
             // 해당 콜백으로 사파리 브라우저를 오픈하고 쿼리스트링으로 크롬번역기를 호출한다
-            // console.log(document.getElementById('foo'))
-            // document.getElementById("foo").href = "http://www.address.com";
-
-
             let query = clipboard.readText()
             top.webContents.send('pingGoogleKor', `${googleTranslate}${query}`)
             top.webContents.send("pingPapagoKor", `${papagoTranslate}${query}`)
@@ -108,30 +37,9 @@ function createWindow() {
             top.setAlwaysOnTop(true)
             top.setAlwaysOnTop(false) // 최상단에 노출후 onTop 해제
             // 마지막에 입력된 클립보드의 텍스트를 번역한다
-            // if (googleStat) { // 사용자가 stat을 비활성화시 동작하지 않음
-            //     childGoogle.loadURL(`${googleTranslate}${query}`)
-            //     childGoogle.restore() // 창이 최소
-            //     childGoogle.setAlwaysOnTop(true)
-            //     childGoogle.setAlwaysOnTop(false) // 최상단에 노출후 onTop 해제
-            // }
-            //
-            // if (papagoStat) {
-            //     childPapago.loadURL(`${papagoTranslate}${query}`)
-            //     childPapago.restore()
-            //     childPapago.setAlwaysOnTop(true)
-            //     childPapago.setAlwaysOnTop(false)
-            // }
-
-            // shell.openExternal(`${googleTranslate}${query}`)
-            // shell.openExternal(`${papagoTranslate}${query}`)
         })
 
         globalShortcut.register('CommandOrControl+e', () => {
-            // console.log('CommandOrControl+X is pressed')
-            // 해당 콜백으로 사파리 브라우저를 오픈하고 쿼리스트링으로 크롬번역기를 호출한다
-            // console.log(document.getElementById('foo'))
-            // document.getElementById("foo").href = "http://www.address.com";
-
             let query = clipboard.readText()
             // 마지막에 입력된 클립보드의 텍스트를 번역한다
 
@@ -140,23 +48,6 @@ function createWindow() {
             top.restore() // 창이 최소화시 돌려준다
             top.setAlwaysOnTop(true)
             top.setAlwaysOnTop(false) // 최상단에 노출후 onTop 해제
-
-            // if (googleStat) {
-            //     childGoogle.loadURL(`${googleTranslateEn}${query}`)
-            //     childGoogle.restore()
-            //     childGoogle.setAlwaysOnTop(true)
-            //     childGoogle.setAlwaysOnTop(false)
-            // }
-            //
-            // if (papagoStat) {
-            //     childPapago.loadURL(`${papagoTranslateEn}${query}`)
-            //     childPapago.restore()
-            //     childPapago.setAlwaysOnTop(true)
-            //     childPapago.setAlwaysOnTop(false)
-            // }
-
-            // shell.openExternal(`${googleTranslate}${query}`)
-            // shell.openExternal(`${papagoTranslate}${query}`)
         })
     })
 }
